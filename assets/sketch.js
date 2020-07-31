@@ -1,9 +1,9 @@
 console.log('hi')
 
 function setup(){
-    size(800, 800)
+    createCanvas(400, 400);
 }
 
 function draw(){
-    background('red')
+    background(200,100,80);
 }

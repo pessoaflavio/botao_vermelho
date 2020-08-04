@@ -1,0 +1,33 @@
+/* Hide scrollbar for Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+    display: none;
+}
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+* {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main_article{
+    /* color: blue; */
+    position: fixed;
+    top: 0px;
+    left: 400px;
+    width: 150px;
+    height: 100%;
+    font-size: 22px;
+    background-color: white;
+    overflow-y: scroll;
+    /* overflow: scroll; */
+}
+.red{
+    color:red;
+}
+.blue{
+    color: blue;
+}

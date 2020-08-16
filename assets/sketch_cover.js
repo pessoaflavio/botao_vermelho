@@ -5,8 +5,9 @@ let img;
 function preload() {
 //   img = loadImage('assets/window.jpeg');
 //   img_p = loadImage('assets/p.jpeg');
+  img_p1 = loadImage('assets/earthtotal.jpg');
 //   img_r = loadImage('assets/r.jpeg');
-  img_y = loadImage('assets/y2.jpg');
+//   img_y = loadImage('assets/y2.jpg');
 //   img_t = loadImage('assets/t.jpeg');
 }
 
@@ -67,7 +68,8 @@ function splitImg(){
     for (i=0;i<ref_cut;i++){
         let randomY = random(-1*refy, refy)
         let randomY2 = random(-1*refy, refy)
-        image(img_y, (windowWidth/ref_cut)*i, randomY, windowWidth/ref_cut, windowHeight-refy, random(0,img_y.width), 0, img_y.width/ref_cut, img_y.height-refy); 
+        image(img_p1, (windowWidth/ref_cut)*i, randomY, windowWidth/ref_cut, windowHeight-refy, (img_p1.width/ref_cut)*i, 0, img_p1.width/ref_cut, img_p1.height-refy); 
+        // image(img_p1, (windowWidth/ref_cut)*i, randomY, windowWidth/ref_cut, windowHeight-refy, random(0,img_p1.width), 0, img_p1.width/ref_cut, img_p1.height-refy); 
         // blend(img_y, windowWidth/56*i, randomY2, windowWidth/56, windowHeight-refy, random(0,img_p.width), 0, img_p.width/56, windowHeight-refy,MULTIPLY);
     }
 

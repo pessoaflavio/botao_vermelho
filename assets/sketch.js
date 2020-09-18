@@ -4,7 +4,7 @@ let img;
 
 function preload() {
 //   img = loadImage('assets/window.jpeg');
-  img_p = loadImage('assets/p.jpeg');
+  img_p = loadImage('assets/stars.jpg');
 //   img_r = loadImage('assets/r.jpeg');
   img_y = loadImage('assets/y.jpeg');
 //   img_t = loadImage('assets/t.jpeg');
@@ -61,8 +61,8 @@ function splitImg(){
 
     // loop over a defined lenght? and... maybe start adding images
     // we need to randomize posy, and also where we extract the image from the original
-    let refy = 120;
-    let ref_cut = 120;
+    let refy = 200;
+    let ref_cut = 200;
 
     for (i=0;i<ref_cut;i++){
         let randomY = random(-1*refy, refy)

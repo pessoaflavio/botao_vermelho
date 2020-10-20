@@ -3,77 +3,38 @@ console.log('hi')
 let img;
 
 function preload() {
-//   img = loadImage('assets/window.jpeg');
-  img_p = loadImage('assets/amazon3.jpg');
-//   img_r = loadImage('assets/r.jpeg');
-  img_y = loadImage('assets/y.jpeg');
-//   img_t = loadImage('assets/t.jpeg');
+  img_p = loadImage('assets/amazon2.jpg');
 }
 
 function setup(){
     let sketch_canvas = createCanvas(windowWidth, windowHeight);
-    sketch_canvas.parent('#canvasPlace');
-
-    let txt;
-
-    // fetch('assets/test.txt')
-    // .then(response => response.text())
-    // .then((data) => {
-    //     console.log(data)
-    //     txt = data;
-    //     let color;
-    //     let div = createDiv(`<div><p id='poetry'>${txt}</p></div>`);
-    //     div.class('main_article');
-    //     div.mouseWheel(messTextUp);
-    //     return div;
-    // })
-    
+    sketch_canvas.parent('#canvasPlace');   
 }
-
-function messTextUp(event){
-
-    let el = document.getElementById('poetry');
-    console.log(event.deltaY)
-    if (event.deltaY > 0){
-        return el.setAttribute('class', 'red');
-    } else {
-        return el.setAttribute('class', 'blue');
-    }
-}
-
-
-// image(img, dx, dy, dWidth, dHeight, sx, sy, [sWidth], [sHeight])
-
 
 function draw(){
     noLoop();
     background('#00ff44');
-    // background(200,100,80);
-    // image(img, 0, 0);
-    // image(img, 0, 200, 400, 600, 50, 50, 50, 50);
-    for (i=0;i<20;i++){
-        splitImg();
-    }
-    // saveFrames('panama', 'png', 60, 30)
-
-
+    splitImg();
 }
 
 function splitImg(){
 
     // loop over a defined lenght? and... maybe start adding images
     // we need to randomize posy, and also where we extract the image from the original
-    for (j=0;j<1;j++){
-        let min_width = 10;
-        let max_width = 50;
+    for (j=0;j<20;j++){
+        let min_width = 4;
+        let max_width = 24;
         let stroke = min_width/2;
-        let ngen = function (){
-            let x = Math.floor(random(min_width,max_width))
-            if (x % 2 === 0) {
-                return x
+        let newArray4 = [];
+        for (b=min_width;b<=max_width;b++){
+            if (b%4===0){
+                newArray4.push(b)
             } else {
-                return x + 1
+                 
             }
+        }
+        let ngen = function (){
+           return newArray4[Math.floor(random(0,newArray4.length-1))] 
         };
         let n_segments = ngen();
         let strip_width = n_segments;
@@ -89,9 +50,8 @@ function splitImg(){
     
             if (i == 0) {
                 let data_repo = new Object;
-                data_repo.con;
                 data_repo.x = 0; 
-                data_repo.y = random(0,windowHeight/2-strip_width);
+                data_repo.y = random(0,windowHeight/1.5-strip_width);
                 data_repo.w = random(strip_width*2,(windowWidth*constSlash)-strip_width)
                 data_repo.h = strip_width;
                 imgList.push(data_repo);
@@ -123,9 +83,13 @@ function splitImg(){
                             data_repo.y = (prevItem.y + prevItem.h - strip_width);
                         }
                     } else {
-                        data_repo.con = windowWidth;
                         data_repo.w = windowWidth - prevItem.x - strip_width;
-                        data_repo.y = (prevItem.y + prevItem.h - strip_width);
+                        if ((i+1)%4===0){
+                            data_repo.y = (prevItem.y);
+                        } else {
+                            data_repo.y = (prevItem.y + prevItem.h - strip_width);
+                        }
+                        
                     } 
                     imgList.push(data_repo);
     
@@ -135,28 +99,28 @@ function splitImg(){
             fill('#00ff44');
             noStroke();
             if (i%2!=0){
-                if (i%4!=0){
-                    fill('blue')
+                if ((i+1)%4===0){
                     rect(imgList[i].x, imgList[i].y-stroke, imgList[i].w, stroke)
-                    fill('brown')
-                    rect(imgList[i].x + imgList[i].w, imgList[i].y - stroke, stroke, imgList[i].h - strip_width)
-                    fill('yellow')
+
+                    rect(imgList[i].x + imgList[i].w, imgList[i].y + stroke + strip_width, stroke, imgList[i].h - strip_width)
+
                     rect(imgList[i].x, imgList[i].y + imgList[i].h, imgList[i].w, stroke)
-                    rect(imgList[i].x - stroke, imgList[i].y + stroke + strip_width, stroke, imgList[i].h - strip_width)
+
+                    rect(imgList[i].x - stroke, imgList[i].y - stroke, stroke, imgList[i].h - strip_width)
                 } else {
-                    fill('blue')
+
                     rect(imgList[i].x, imgList[i].y-stroke, imgList[i].w, stroke)
-                    fill('pink')
-                    rect(imgList[i].x - stroke, imgList[i].y + stroke + strip_width, stroke, imgList[i].h - strip_width)
-                    fill('orange')
+
+                    rect(imgList[i].x + strip_width, imgList[i].y - stroke, stroke, imgList[i].h - strip_width)
+
                     rect(imgList[i].x, imgList[i].y + imgList[i].h, imgList[i].w, stroke)
-                    fill('white')
+
                     rect(imgList[i].x - stroke, imgList[i].y + stroke + strip_width, stroke, imgList[i].h - strip_width)
                 }
                 
                
             } else {
-                fill('red');
+                
                 rect(imgList[i].x,imgList[i].y-stroke,imgList[i].w,stroke)
                 rect(imgList[i].x,imgList[i].y+imgList[i].h,imgList[i].w,stroke)
             }

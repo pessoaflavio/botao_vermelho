@@ -2,14 +2,15 @@ console.log('hi')
 
 let img;
 
-let w = 1200;
-let h = 900;
-let divw = 80;
-let divh = 60;
+let w = 3927;
+let h = 2154;
+let divw = 160;
+let divh = 120;
+let bgcolor = '#00ff44';
 
 
 function preload() {
-    img_y = loadImage('assets/teste2.jpg');
+    img_y = loadImage('assets/lazarus2.jpg');
 }
 
 function setup(){
@@ -20,8 +21,9 @@ function setup(){
 
 function draw(){
     noLoop();
-    background('#00ff44');
+    
     splitImg();
+    
 }
 
 function splitImg(){
@@ -42,13 +44,13 @@ function splitImg(){
 
         for (j=1; j<divh; j++) {
             // let randomR = ref_h;
-            let randomR = random(2,ref_h*1.5);
+            let randomR = random(3,ref_h*2);
 
             let color = get(i*ref_w, j*ref_h);
             fill(color);
             //noStroke();
-            stroke('white');
-            //strokeWeight(4);
+            stroke(bgcolor);
+            strokeWeight(2);
             // console.log(`x: ${i*ref_w} y: ${j*ref_h} w: ${ref_h} h: ${ref_h}`);
             let elObj = {};
             elObj.y = j*ref_h;
@@ -66,7 +68,7 @@ function splitImg(){
         }
     }
     clear();
-
+    background(bgcolor);
     for (z=0;z<data.length;z++){
         //console.log(data[z]);
         fill(data[z].c);

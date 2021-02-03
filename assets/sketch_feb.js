@@ -9,7 +9,7 @@ let shuffled_array = [];
 
 
 function preload() {
-    img_y = loadImage('assets/suplemento.jpg');
+    img_y = loadImage('assets/suplemento2.jpg');
 }
 
 function setup(){
